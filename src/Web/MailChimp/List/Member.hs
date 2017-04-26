@@ -178,12 +178,16 @@ instance ToJSON ListMemberRequest where
       "email_address" .= listMemberEmailAddress
         : mergeFields
         : "status" .= listMemberStatus
-        : listMemberExtra
+        : interests
     where
       mergeFields =
         ( "merge_fields"
         , Aeson.object (fmap (fmap toJSON) listMemberMergeFields)
         )
+      interests =
+        [( "interests"
+        , Aeson.object (fmap (fmap toJSON) listMemberExtra)
+        )]
 
 
 -- |

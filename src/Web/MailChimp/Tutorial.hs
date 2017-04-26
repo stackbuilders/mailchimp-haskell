@@ -35,6 +35,7 @@ module Web.MailChimp.Tutorial
 --   manager <- makeManager
 --   key <- fmap pack (getEnv "MAILCHIMP_API_KEY")
 --   listId <- fmap Text.pack (getEnv "MAILCHIMP_LIST_ID")
+--   groupId <- fmap Text.pack (getEnv "MAILCHIMP_HOMEGROUP_ID")
 --
 --   let
 --     Just ListMemberClient {..} =
@@ -43,7 +44,9 @@ module Web.MailChimp.Tutorial
 --   let
 --     member =
 --       (makeListMemberRequest "sd@sd.com" Pending)
---         { listMemberMergeFields = [("FNAME", "Juan")]
+--         { 
+--            listMemberMergeFields = [("FNAME", "Juan")]
+--           ,listMemberExtra = [(groupId, Bool True)]
 --         }
 --
 --   eitherAdd <- addListMember member
